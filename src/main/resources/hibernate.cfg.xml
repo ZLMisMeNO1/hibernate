@@ -7,11 +7,14 @@
 	<session-factory>
 		<property name="connection.username" >root</property>
 		<property name="connection.password">admin</property>
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate5</property>
+<!-- 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate5</property>-->
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.url">jdbc:oracle:thin:@//localhost:1521/XE</property> 
 		
 		<!-- 设置数据库方言 -->
-		<property name="dialect" >org.hibernate.dialect.MySQLInnoDBDialect</property>
+<!-- 		<property name="dialect" >org.hibernate.dialect.MySQLInnoDBDialect</property>-->
+		<property name="dialect" >org.hibernate.dialect.Oracle10gDialect</property> 
 		
 		<!-- 在控制台打印sql -->
 		<property name="show_sql">true</property>
@@ -20,6 +23,24 @@
 		
 		<property name="hbm2ddl.auto">update</property>
 		
-		<mapping resource="cn/hibernate/pojo/xml/news-mapping.xml"/>
+		
+		<!--  配置c3p0数据源 -->
+		<property name="hibernate.c3p0.max_size">10</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="c3p0.acquire_increment">2</property>
+		
+		<property name="c3p0.idle_test_period">2000</property>
+		<property name="c3p0.timeout">2000</property>
+		<property name="c3p0.max_statements">10</property>
+		
+		<property name="hibernate.jdbc.fetch_size">100</property>
+		<property name="hibernate.jdbc.batch_size">30</property>
+	<!-- 	<mapping resource="cn/hibernate/pojo/xml/news-mapping.xml"/>
+		<mapping resource="cn/hibernate/pojo/xml/worker-mapping.xml"/>
+		<mapping resource="cn/hibernate/n21/customer-order-mapping.xml"/> 
+		<mapping resource="cn/hibernate/n21/both/customer.xml"/>
+		<mapping resource="cn/hibernate/n21/both/order.xml"/>-->
+	<!-- 	<mapping resource="cn/hibernate/pk/one2one/dept.hbm.xml"/> -->
+		<mapping resource="cn/hibernate/joinclass/person.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

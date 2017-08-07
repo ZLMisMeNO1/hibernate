@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.subclass" >
+	<class name="Person" table="TB_PERSON" discriminator-value="person">
+		<id name="pid" type="java.lang.Integer" column="PERSON_ID">
+			<generator class="native">
+			</generator>
+		</id>
+		<discriminator column="TYPE" type="string"></discriminator>
+		<property name="name" type="java.lang.String" >
+			<column name="PERSON_NAME"/> 
+		</property>
+		<property name="age" type="java.lang.Integer" column="PERSON_AGE" />
+		<subclass name="Teacher" discriminator-value="teacher">
+			<property name="teacherName" type="string" column="TEACHER_NAME"></property>
+		</subclass>
+		<!-- 映射子类Student -->
+		<subclass name="Student" discriminator-value="student">
+			<property name="school" type="string" column="school" />
+		</subclass>
+	</class>
+</hibernate-mapping>

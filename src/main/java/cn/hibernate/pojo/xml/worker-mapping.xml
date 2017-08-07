@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.pojo">
+	<class name="Worker" table="tb_worker" dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="name" type="string" column="col_name"></property>
+		<!-- 映射组成关系 -->
+		
+		<component name="pay" class="Pay">
+			<!-- 指定组成关系的组件的属性 -->
+			<property name="monthlyPay" type="int" column="month_pay"></property>
+			<property name="yearPay"  type="int" column="year_pay"></property>
+			<property name="vocationWithPay"  type="int" column="vocation_with_pay"></property>
+		</component>
+	</class>
+</hibernate-mapping>

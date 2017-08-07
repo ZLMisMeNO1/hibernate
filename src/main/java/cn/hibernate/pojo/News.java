@@ -8,6 +8,7 @@
   
 package cn.hibernate.pojo;  
 
+import java.sql.Blob;
 import java.sql.Date;
 
 /** 
@@ -29,12 +30,43 @@ public class News {
 	
 	private Date date;
 
+	private String desc;
 	
-//	public News() {
-//		System.out.println("使用了无参构造器");
-//	}
+	//大文本
+	private String content ;
+	//图片
+	private Blob image;
+	
+	
+	public String getContent() {
+		return content;
+	}
 
-	public News( String title, String author, Date date) {
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Blob getImage() {
+		return image;
+	}
+
+	public void setImage(Blob image) {
+		this.image = image;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public News() {
+		System.out.println("使用了无参构造器");
+	}
+
+	public News(String title, String author, Date date) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -76,8 +108,9 @@ public class News {
 	@Override
 	public String toString() {
 		return "News [id=" + id + ", title=" + title + ", author=" + author
-				+ ", date=" + date + "]";
+				+ ", date=" + date + ", desc=" + desc + "]";
 	}
+
 	
 	
 }

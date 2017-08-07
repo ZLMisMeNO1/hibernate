@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.pk.one2one">
+	<class name="Department" table="TB_DEPT">
+		<id name="deptId" type="java.lang.Integer" column="DEPT_ID">
+			<generator class="foreign">
+				<param name="property">mgr</param>
+			</generator>
+		</id>
+		<property name="deptName" type="java.lang.String" >
+			<column name="DEPT_NAME"/> 
+		</property>
+		<one-to-one name="mgr" class="Manager" constrained="true"></one-to-one>
+	</class>
+</hibernate-mapping>
